@@ -53,15 +53,54 @@
 
     <dependencies>
 
+        <!--
+        经过测试，决定使用ALI的
+        这个虽然可以从文件转化位JSON，但无法从JSON转为JavaBean
+        <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+            <scope>test</scope>
+        </dependency>
+        -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+
         <!-- 测试依赖的包 -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.12</version>
+            <version>4.13</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- 测试失败时不影响编译 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.4</version>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <!-- 使用指定的库，否则 json 识别不了 -->
+        <repository>
+            <id>central</id>
+            <name>Maven Home</name>
+            <url>https://repo1.maven.org/maven2/</url>
+        </repository>
+    </repositories>
 
 </project>
