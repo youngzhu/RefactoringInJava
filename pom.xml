@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.youngzy</groupId>
+    <artifactId>refactoring-in-java</artifactId>
+    <version>1.0.0</version>
+    <name>RefactoringInJava</name>
+    <description>Refactoring In Java</description>
+    <inceptionYear>2020</inceptionYear>
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <licenses>
+        <license>
+            <name>GNU GENERAL PUBLIC LICENSE, Version 3</name>
+            <url>https://www.gnu.org/licenses/</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>youngzy</id>
+            <name>Young Zhu</name>
+            <email>young.zhu.2012@gmail.com</email>
+            <url>http://www.YoungZY.com/</url>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>
+            scm:git:git://github.com/youngzhu/RefactoringInJava
+        </connection>
+        <developerConnection>
+            scm:git:git://github.com/youngzhu/RefactoringInJava
+        </developerConnection>
+        <url>
+            https://github.com/youngzhu/RefactoringInJava
+        </url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>
+            https://github.com/youngzhu/RefactoringInJava/issues
+        </url>
+    </issueManagement>
+
+    <dependencies>
+
+        <!-- 测试依赖的包 -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+
+</project>
