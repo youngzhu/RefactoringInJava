@@ -1,11 +1,15 @@
 package com.youngzy.refactoring.edition2.ch01;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONReader;
+import com.alibaba.fastjson.parser.Feature;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Statement {
@@ -14,12 +18,18 @@ public class Statement {
     public void statement() {
         double totalAmount = 0;
         int volumeCredits = 0;
-        String result = "Statement for " + invoice.customer;
+        String result = "Statement for " + invoice.getCustomer();
 
-        for (Performance perf : invoice.performances) {
+        for (Performance perf : invoice.getPerformances()) {
 //            final Play play = plays[perf.playID];
 
         }
+    }
+
+    public List<Invoice> loadInvoices(InputStream jsonStream) {
+        JSONReader jsonReader = new JSONReader(new InputStreamReader(jsonStream));
+
+        return JSON.parseArray(jsonReader.readString(), Invoice.class);
     }
 
     public Map<String, Play> loadPlays(InputStream jsonStream) {
@@ -32,7 +42,7 @@ public class Statement {
         也可以将Map作为参数，read后数据填充到Map里
          */
 //      Map<String, Object> map = (Map<String, Object>) jsonReader.readObject();
-        Map<String, JSONObject> map = new HashMap<String, JSONObject>();
+        Map<String, JSONObject> map = new HashMap<>();
         jsonReader.readObject(map);
 
         String key;
@@ -48,14 +58,49 @@ public class Statement {
         return ret;
     }
 
-    private static class Performance {
+}
+
+class Performance {
+    private String playID;
+    private int audience;
+
+    public String getPlayID() {
+        return playID;
     }
 
-
-    private class Invoice {
-        String customer;
-        Performance[] performances;
+    public void setPlayID(String playID) {
+        this.playID = playID;
     }
+
+    public int getAudience() {
+        return audience;
+    }
+
+    public void setAudience(int audience) {
+        this.audience = audience;
+    }
+
+}
+
+class Invoice {
+    public String getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(String customer) {
+        this.customer = customer;
+    }
+
+    public Performance[] getPerformances() {
+        return performances;
+    }
+
+    public void setPerformances(Performance[] performances) {
+        this.performances = performances;
+    }
+
+    private String customer;
+    private Performance[] performances;
 }
 
 class Play {
