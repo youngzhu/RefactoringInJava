@@ -40,4 +40,15 @@ public class StatementTest {
         assertEquals("othello", performance.getPlayID());
         assertEquals(40, performance.getAudience());
     }
+
+    @Test
+    public void statement() {
+        Map<String, Play> plays = stat.loadPlays(getClass().getResourceAsStream("/plays.json"));
+
+        List<Invoice> invoiceList = stat.loadInvoices(getClass().getResourceAsStream("/invoices.json"));
+        Invoice invoice = invoiceList.get(0);
+
+        String result = stat.statement(invoice, plays);
+        System.out.println(result);
+    }
 }

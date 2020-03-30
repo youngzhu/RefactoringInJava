@@ -15,15 +15,52 @@ import java.util.Map;
 public class Statement {
     static Invoice invoice;
 
-    public void statement() {
+    public String statement(Invoice invoice, Map<String, Play> plays) {
         double totalAmount = 0;
         int volumeCredits = 0;
-        String result = "Statement for " + invoice.getCustomer();
+        String result = "Statement for " + invoice.getCustomer() + "\n";
 
         for (Performance perf : invoice.getPerformances()) {
-//            final Play play = plays[perf.playID];
+            final Play play = plays.get(perf.getPlayID());
+            double thisAmount = 0;
+
+            switch (play.getType()) {
+                case "tragedy":
+                    thisAmount = 40000;
+                    if (perf.getAudience() > 30) {
+                        thisAmount += 1000 * (perf.getAudience() - 30);
+                    }
+                    break;
+                case "comedy":
+                    thisAmount = 30000;
+                    if (perf.getAudience() > 20) {
+                        thisAmount += 10000 + 500 * (perf.getAudience() - 20);
+                    }
+                    thisAmount += 300 * perf.getAudience();
+                    break;
+                default:
+                    throw new Error("unknown type:" + play.getType());
+            }
+
+            // add volume credits
+            volumeCredits += Math.max(perf.getAudience() - 30, 0);
+            // add extra credit for every ten comedy attendees
+            if ("comedy".equals(play.getType())) {
+                volumeCredits += Math.floor(perf.getAudience() / 5);
+            }
+
+            // print line for this order
+            result += play.getName() + ": " + thisAmount / 100
+                        + " (" + perf.getAudience() + " seats)\n";
+
+            totalAmount += thisAmount;
 
         }
+
+        result += "Amount owed is " + totalAmount / 100 + "\n";
+        result += "You earned " + volumeCredits + " credits\n";
+
+        return result;
     }
 
     public List<Invoice> loadInvoices(InputStream jsonStream) {
