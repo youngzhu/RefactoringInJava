@@ -13,11 +13,11 @@ import java.util.Map;
 
 public class StatementTest {
 
-    private Statement stat;
+    private Statement01 stat;
 
     @Before
     public void setUp() throws Exception {
-        stat = new Statement();
+        stat = new Statement01();
     }
 
     @Test

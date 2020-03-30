@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Statement {
+public class Statement01 {
     static Invoice invoice;
 
     public String statement(Invoice invoice, Map<String, Play> plays) {
@@ -23,25 +23,7 @@ public class Statement {
 
         for (Performance perf : invoice.getPerformances()) {
             final Play play = plays.get(perf.getPlayID());
-            double thisAmount = 0;
-
-            switch (play.getType()) {
-                case "tragedy":
-                    thisAmount = 40000;
-                    if (perf.getAudience() > 30) {
-                        thisAmount += 1000 * (perf.getAudience() - 30);
-                    }
-                    break;
-                case "comedy":
-                    thisAmount = 30000;
-                    if (perf.getAudience() > 20) {
-                        thisAmount += 10000 + 500 * (perf.getAudience() - 20);
-                    }
-                    thisAmount += 300 * perf.getAudience();
-                    break;
-                default:
-                    throw new Error("unknown type:" + play.getType());
-            }
+            double thisAmount = amountFor(perf, play);
 
             // add volume credits
             volumeCredits += Math.max(perf.getAudience() - 30, 0);
@@ -62,6 +44,29 @@ public class Statement {
         result += "You earned " + volumeCredits + " credits\n";
 
         return result;
+    }
+
+    private double amountFor(Performance perf, Play play) {
+        double thisAmount = 0;
+
+        switch (play.getType()) {
+            case "tragedy":
+                thisAmount = 40000;
+                if (perf.getAudience() > 30) {
+                    thisAmount += 1000 * (perf.getAudience() - 30);
+                }
+                break;
+            case "comedy":
+                thisAmount = 30000;
+                if (perf.getAudience() > 20) {
+                    thisAmount += 10000 + 500 * (perf.getAudience() - 20);
+                }
+                thisAmount += 300 * perf.getAudience();
+                break;
+            default:
+                throw new Error("unknown type:" + play.getType());
+        }
+        return thisAmount;
     }
 
     public List<Invoice> loadInvoices(InputStream jsonStream) {
@@ -97,4 +102,3 @@ public class Statement {
     }
 
 }
-
