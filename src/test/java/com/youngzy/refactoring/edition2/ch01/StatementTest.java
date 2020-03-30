@@ -2,6 +2,8 @@ package com.youngzy.refactoring.edition2.ch01;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.JSONReader;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.io.InputStreamReader;
@@ -9,6 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class StatementTest {
+
+    private Statement stat;
+
+    @Before
+    public void setUp() throws Exception {
+        stat = new Statement();
+    }
 
     @Test
     public void readJSON() throws Exception {
@@ -35,7 +44,15 @@ public class StatementTest {
 //        }
 //
 
-        System.out.println(jsonObject.name);
-
     }
+
+    @Test
+    public void loadPlays() {
+        Map<String, Play> playMap = stat.loadPlays(getClass().getResourceAsStream("/plays.json"));
+
+        Play play = playMap.get("as-like");
+        Assert.assertEquals("As You Like It", play.getName());
+        Assert.assertEquals("comedy", play.getType());
+    }
+
 }
