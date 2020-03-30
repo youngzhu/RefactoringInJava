@@ -12,9 +12,15 @@ import java.util.List;
 import java.util.Map;
 
 public class Statement01 {
-    static Invoice invoice;
+    private Invoice invoice;
+    private Map<String, Play> plays;
 
-    public String statement(Invoice invoice, Map<String, Play> plays) {
+    public Statement01(Invoice invoice, Map<String, Play> plays) {
+        this.invoice = invoice;
+        this.plays = plays;
+    }
+
+    public String statement() {
         double totalAmount = 0;
         int volumeCredits = 0;
         final NumberFormat format = NumberFormat.getCurrencyInstance();
@@ -67,38 +73,6 @@ public class Statement01 {
                 throw new Error("unknown type:" + play.getType());
         }
         return thisAmount;
-    }
-
-    public List<Invoice> loadInvoices(InputStream jsonStream) {
-        JSONReader jsonReader = new JSONReader(new InputStreamReader(jsonStream));
-
-        return JSON.parseArray(jsonReader.readString(), Invoice.class);
-    }
-
-    public Map<String, Play> loadPlays(InputStream jsonStream) {
-        Map<String, Play> ret = new HashMap<>();
-
-        JSONReader jsonReader = new JSONReader(new InputStreamReader(jsonStream));
-
-        /*
-        可以直接read后强制转换成Map
-        也可以将Map作为参数，read后数据填充到Map里
-         */
-//      Map<String, Object> map = (Map<String, Object>) jsonReader.readObject();
-        Map<String, JSONObject> map = new HashMap<>();
-        jsonReader.readObject(map);
-
-        String key;
-        Play play;
-
-        for (Map.Entry<String, JSONObject> entry : map.entrySet()) {
-            key = entry.getKey();
-            play = JSONObject.parseObject(entry.getValue().toJSONString(), Play.class);
-
-            ret.put(key, play);
-        }
-
-        return ret;
     }
 
 }
