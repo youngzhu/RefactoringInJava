@@ -1,9 +1,8 @@
 package com.youngzy.refactoring.edition1.ch01;
 
+import com.youngzy.refactoring.edition1.ch01.v02.*;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class CustomerTest {
 

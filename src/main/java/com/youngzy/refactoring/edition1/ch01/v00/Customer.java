@@ -1,4 +1,4 @@
-package com.youngzy.refactoring.edition1.ch01;
+package com.youngzy.refactoring.edition1.ch01.v00;
 
 import java.util.Enumeration;
 import java.util.Vector;

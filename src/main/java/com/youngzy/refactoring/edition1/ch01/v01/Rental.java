@@ -1,4 +1,4 @@
-package com.youngzy.refactoring.edition1.ch01;
+package com.youngzy.refactoring.edition1.ch01.v01;
 
 public class Rental {
     private Movie movie;
