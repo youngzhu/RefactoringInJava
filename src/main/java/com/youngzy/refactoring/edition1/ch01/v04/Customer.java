@@ -16,8 +16,6 @@ public class Customer {
     }
 
     public String statement() {
-        int frequentRenterPoints = 0;
-
         // 这里看出作者定义实例变量以 _ 开头的好处了
         // 原代码是
 //        Enumeration rentals = _rentals.elements();
@@ -27,7 +25,6 @@ public class Customer {
 
         while (elements.hasMoreElements()) {
             Rental each = (Rental) elements.nextElement();
-            frequentRenterPoints += each.getFrequentRenterPoints();
 
             // show figures for this rental
             result += "\t" + each.getMovie().getTitle()
@@ -36,9 +33,22 @@ public class Customer {
 
         // add footer lines
         result += "Amount owed is " + getTotalCharge() + "\n";
-        result += "You earned " + frequentRenterPoints + " frequent renter points";
+        result += "You earned " + getTotalFrequentRenterPoints() + " frequent renter points";
 
         return result;
+    }
+
+    private int getTotalFrequentRenterPoints() {
+        int ret = 0;
+
+        Enumeration elements = rentals.elements();
+
+        while (elements.hasMoreElements()) {
+            Rental each = (Rental) elements.nextElement();
+            ret += each.getFrequentRenterPoints();
+        }
+
+        return ret;
     }
 
     private double getTotalCharge() {
