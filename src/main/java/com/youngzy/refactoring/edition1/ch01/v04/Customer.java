@@ -38,6 +38,29 @@ public class Customer {
         return result;
     }
 
+    public String htmlStatement() {
+        // 这里看出作者定义实例变量以 _ 开头的好处了
+        // 原代码是
+//        Enumeration rentals = _rentals.elements();
+        Enumeration elements = rentals.elements();
+
+        String result = "<H1>Rental Record for <EM>" + this.name + "</EM></H1><P>\n";
+
+        while (elements.hasMoreElements()) {
+            Rental each = (Rental) elements.nextElement();
+
+            // show figures for this rental
+            result += each.getMovie().getTitle()
+                    + ": " + each.getCharge() + "<BR>\n";
+        }
+
+        // add footer lines
+        result += "<P>You owe <EM>" + getTotalCharge() + "</EM><P>\n";
+        result += "On this rental you earned <EM>" + getTotalFrequentRenterPoints() + "</EM> frequent renter points<P>";
+
+        return result;
+    }
+
     private int getTotalFrequentRenterPoints() {
         int ret = 0;
 

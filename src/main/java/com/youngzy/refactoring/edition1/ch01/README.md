@@ -38,5 +38,5 @@
 1. 将变量 totalAmount 替换成方法 getTotalCharge
 1. 将变量 frequentRenterPoints 替换成方法 getTotalfrequentRenterPoints
 
-测试压缩，commit 1
-测试压缩，commit 2
+## 增加HTML实现
+这时增加HTML实现要方便的多，而且会减少很多重复代码
