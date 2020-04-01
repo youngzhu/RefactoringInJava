@@ -15,3 +15,7 @@
 1. 将 amountFor 方法复制到 Rental，需调整。然后Customer 的 amountFor 方法直接调用 Rental 的新方法。delegate to the new method.
 2. 将所有用到 Customer.amountFor 的地方 换成 Rental.getCharge 
 3. 删除 Customer.amountFor 方法
+4. 由于 `thisAmount`变量不会再改变，显得有点多余，直接用 `Rental.getCharge` 替代。Replace Temp with Query
+
+> IDEA 的 `Replace Temp with Query` 菜单，会直接在类里新增一个方法。所以现实中要做就尽早。
+>这里尊重原文，手动改一下。
