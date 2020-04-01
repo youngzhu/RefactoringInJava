@@ -19,3 +19,8 @@
 
 > IDEA 的 `Replace Temp with Query` 菜单，会直接在类里新增一个方法。所以现实中要做就尽早。
 >这里尊重原文，手动改一下。
+>
+## Step 03：抽取积分计算的代码
+1. Extract Method：getFrequentRenterPoints
+2. 将上述方法移到 Rental 类
+3. 删除 Customer.getFrequentRenterPoints 方法
