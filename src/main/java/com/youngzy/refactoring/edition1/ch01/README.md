@@ -37,3 +37,5 @@
 
 1. 将变量 totalAmount 替换成方法 getTotalCharge
 1. 将变量 frequentRenterPoints 替换成方法 getTotalfrequentRenterPoints
+
+测试压缩，commit 1
