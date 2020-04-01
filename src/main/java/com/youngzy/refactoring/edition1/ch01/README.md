@@ -24,3 +24,13 @@
 1. Extract Method：getFrequentRenterPoints
 2. 将上述方法移到 Rental 类
 3. 删除 Customer.getFrequentRenterPoints 方法
+
+## Step 04: Removing Temps
+局部变量多了会滋生问题。  
+优点：变量抽取成方法之后方便复用  
+缺点：可能导致重复代码，如遍历
+
+> 直接用 IDEA 的 `Replace Temp with Query` 菜单会出错，因为它不是一个只读变量，而是会改变。所以要手动重构
+>
+
+1. 将变量 totalAmount 替换成方法 getTotalCharge
