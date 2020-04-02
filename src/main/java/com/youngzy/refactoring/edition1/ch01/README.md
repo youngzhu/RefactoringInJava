@@ -41,8 +41,18 @@
 ## 增加HTML实现
 这时增加HTML实现要方便的多，而且会减少很多重复代码
 
-squash test 1
-squash test 2
+## Step 05: 用多态替换条件语句
+1. 在A对象中对B对象的某个属性值使用 switch ，不好。改之。将Rental中的getCharge方法复制到Movie中，Rental调用Movie的方法
+2. 删除Rental中的方法。
+3. 对 getFrequentRenterPoints 一样，重复上2步
 
-fixup test 1
-fixup test 2
+### 状态模式
+1. 创建新类：Price ...
+2. 将Movie中 priceCode 从基本类型改为 Price 对象
+3. 将 Movie 中的 getCharge 方法移到 Price 中
+4. 使用多态，将 getCharge 的实现分布到子类中
+5. 将 Price 中的 getCharge 改为抽象方法
+6. 对 getFrequentRenterPoints 方法，做同样的事情。
+不同的是，该方法不必分散到所有子类中。
+所以父类中的方法不必改为抽象。
+只对特定子类实现即可，其余子类共享父类的。
