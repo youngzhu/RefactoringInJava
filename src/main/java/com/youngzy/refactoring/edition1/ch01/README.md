@@ -41,14 +41,5 @@
 ## 增加HTML实现
 这时增加HTML实现要方便的多，而且会减少很多重复代码
 
-commit 1
-commit 2
-commit 3
-commit 4
-commit 444
-
-fixup 1
-
-fixup 3
-
-fixup 4
+squash test 1
+squash test 2
