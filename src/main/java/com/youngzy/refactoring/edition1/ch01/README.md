@@ -43,3 +43,6 @@
 
 squash test 1
 squash test 2
+
+fixup test 1
+fixup test 2
