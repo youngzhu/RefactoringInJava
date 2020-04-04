@@ -1,6 +1,6 @@
 package com.youngzy.refactoring.edition2.ch01.v00;
 
-class Performance {
+public class Performance {
     private String playID;
     private int audience;
 

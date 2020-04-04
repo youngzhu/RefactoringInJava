@@ -1,6 +1,6 @@
 package com.youngzy.refactoring.edition2.ch01.v01;
 
-class Play {
+public class Play {
 
     private String name;
     private String type;

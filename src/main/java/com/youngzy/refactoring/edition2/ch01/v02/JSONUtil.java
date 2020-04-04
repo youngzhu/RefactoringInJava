@@ -1,4 +1,4 @@
-package com.youngzy.refactoring.edition2.ch01.v00;
+package com.youngzy.refactoring.edition2.ch01.v02;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
