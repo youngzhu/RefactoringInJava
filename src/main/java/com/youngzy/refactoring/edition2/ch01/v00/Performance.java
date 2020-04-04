@@ -1,4 +1,4 @@
-package com.youngzy.refactoring.edition2.ch01;
+package com.youngzy.refactoring.edition2.ch01.v00;
 
 class Performance {
     private String playID;

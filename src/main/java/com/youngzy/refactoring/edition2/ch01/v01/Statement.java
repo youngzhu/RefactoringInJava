@@ -1,21 +1,13 @@
-package com.youngzy.refactoring.edition2.ch01;
+package com.youngzy.refactoring.edition2.ch01.v01;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONReader;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-public class Statement01 {
+public class Statement {
     private Invoice invoice;
     private Map<String, Play> plays;
 
-    public Statement01(Invoice invoice, Map<String, Play> plays) {
+    public Statement(Invoice invoice, Map<String, Play> plays) {
         this.invoice = invoice;
         this.plays = plays;
     }
@@ -53,26 +45,26 @@ public class Statement01 {
     }
 
     private double amountFor(Performance perf, Play play) {
-        double thisAmount = 0;
+        double ret = 0;
 
         switch (play.getType()) {
             case "tragedy":
-                thisAmount = 40000;
+                ret = 40000;
                 if (perf.getAudience() > 30) {
-                    thisAmount += 1000 * (perf.getAudience() - 30);
+                    ret += 1000 * (perf.getAudience() - 30);
                 }
                 break;
             case "comedy":
-                thisAmount = 30000;
+                ret = 30000;
                 if (perf.getAudience() > 20) {
-                    thisAmount += 10000 + 500 * (perf.getAudience() - 20);
+                    ret += 10000 + 500 * (perf.getAudience() - 20);
                 }
-                thisAmount += 300 * perf.getAudience();
+                ret += 300 * perf.getAudience();
                 break;
             default:
                 throw new Error("unknown type:" + play.getType());
         }
-        return thisAmount;
+        return ret;
     }
 
 }

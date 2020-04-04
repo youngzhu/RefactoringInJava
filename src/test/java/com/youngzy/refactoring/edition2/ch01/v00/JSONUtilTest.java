@@ -1,11 +1,11 @@
-package com.youngzy.refactoring.edition2.ch01;
+package com.youngzy.refactoring.edition2.ch01.v00;
 
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 import java.util.List;
 import java.util.Map;
-
-import static org.junit.Assert.*;
 
 public class JSONUtilTest {
 

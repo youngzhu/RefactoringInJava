@@ -1,20 +1,16 @@
 package com.youngzy.refactoring.edition2.ch01;
 
-import com.alibaba.fastjson.JSONObject;
-import com.alibaba.fastjson.JSONReader;
-import static org.junit.Assert.*;
+import com.youngzy.refactoring.edition2.ch01.v01.*;
 import org.junit.Before;
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class StatementTest {
 
-    private Statement01 stat;
+    private Statement stat;
 
     @Before
     public void setUp() throws Exception {
@@ -24,12 +20,21 @@ public class StatementTest {
         List<Invoice> invoiceList = JSONUtil.loadInvoices(invoicesStream);
         Invoice invoice = invoiceList.get(0);
 
-        stat = new Statement01(invoice, JSONUtil.loadPlays(playsStream));
+        stat = new Statement(invoice, JSONUtil.loadPlays(playsStream));
     }
 
     @Test
     public void statement() {
+        String expected = "Statement for BigCo\n" +
+                "  Hamlet: ￥650.00 (55 seats)\n" +
+                "  As You Like It: ￥580.00 (35 seats)\n" +
+                "  Othello: ￥500.00 (40 seats)\n" +
+                "Amount owed is ￥1,730.00\n" +
+                "You earned 47 credits\n";
+
         String result = stat.statement();
         System.out.println(result);
+
+        assertEquals(expected, result);
     }
 }
