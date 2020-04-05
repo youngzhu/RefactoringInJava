@@ -62,6 +62,13 @@ RMB
 1. 移除 factory 类中 amountFor 方法，
 需要调整，因为 totalAmount 中用到了
 
+# Step 08: 使用多态
+1. 为calculator创建2个子类：TragedyCalculator，ComedyCalculator
+1. 创建 createPerformanceCalculator 方法，根据不同的戏剧类型返回不同的计算器
+1. 将 amount 的计算下移到子类中。 并将 父类中的 改为抽象函数
+1. 将 volumeCredits 的计算下移到子类中。
+这里 积分的计算比较特殊。只有喜剧类多了一步计算。
+所以，将该方法保留在父类中，并将对 喜剧的处理下移到子类中
 
 # 总结
 1. 尽量减少临时变量。这样更方便提炼函数
