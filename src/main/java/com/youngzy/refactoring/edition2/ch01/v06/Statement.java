@@ -14,8 +14,30 @@ public class Statement {
     }
 
     public String statement() {
-
         return renderPlainText(StatementDataFactory.createStatementData(invoice, plays));
+    }
+
+    public String htmlStatement() {
+        return renderHtml(StatementDataFactory.createStatementData(invoice, plays));
+    }
+
+    private String renderHtml(StatementData data) {
+        String ret = "<h1>Statement for " + data.getCustomer() + "</h1>\n";
+        ret += "<table>\n";
+        ret += "<tr><th>Play</th><th>Seats</th><th>Cost</th></tr>";
+
+        for (EnrichPerformance perf : data.getPerformances()) {
+
+            ret += "<tr><td>" + perf.getPlay().getName() + "</td><td>" + RMB(perf.getAmount())
+                        + "</td><td>" + perf.getAudience() + "</td></tr>\n";
+
+        }
+
+        ret += "</table>\n";
+        ret += "<p>Amount owed is <em>" + RMB(data.getTotalAmount()) + "</em></p>\n";
+        ret += "<p>You earned <em>" + data.getVolumeCredits() + "</em> credits</p>\n";
+
+        return ret;
     }
 
     private String renderPlainText(StatementData data) {

@@ -51,6 +51,7 @@ RMB
 9. 用 同样的方法处理 totalVolumeCredits 。同时改变了 totalVolumeCredits 的方法签名，加入了参数
 9. 将 statement 方法中 对 data的处理抽取到一个方法中
 9. 将 组装数据（create）和展示数据（statement）彻底分离，移到另一个文件中
+9. 创建 html渲染
 
 
 

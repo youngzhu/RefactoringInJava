@@ -37,4 +37,22 @@ public class StatementTest {
 
         assertEquals(expected, result);
     }
+
+    @Test
+    public void htmlStatement() {
+        String expected = "<h1>Statement for BigCo</h1>\n" +
+                "<table>\n" +
+                "<tr><th>Play</th><th>Seats</th><th>Cost</th></tr><tr><td>Hamlet</td><td>￥650.00</td><td>55</td></tr>\n" +
+                "<tr><td>As You Like It</td><td>￥580.00</td><td>35</td></tr>\n" +
+                "<tr><td>Othello</td><td>￥500.00</td><td>40</td></tr>\n" +
+                "</table>\n" +
+                "<p>Amount owed is <em>￥1,730.00</em></p>\n" +
+                "<p>You earned <em>47</em> credits</p>\n";
+
+        String actual = stat.htmlStatement();
+        System.out.println(actual);
+
+        assertEquals(expected, actual);
+    }
+
 }
