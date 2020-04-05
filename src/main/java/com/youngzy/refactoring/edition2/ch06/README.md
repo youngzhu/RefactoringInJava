@@ -8,3 +8,6 @@ updateDueDate
 
 ## Step 03: 有局部变量（再赋值）
 getOutstanding
+
+# Topic 02: 内联函数 Inline Method
+对简单的函数，应该直接使用函数体，去掉函数
