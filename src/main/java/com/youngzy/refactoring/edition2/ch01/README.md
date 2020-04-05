@@ -44,6 +44,13 @@ RMB
 3. 创建一个空对象 StatementData，作为参数传入 renderPlainText
 4. 将 customer 封装到 Data 类中
 5. 将 performances 封装到 Data中
+6. 新建类 EnrichPerformance 把 Play 包含进去
+7. 将 renderPlainText 中的 playFor 用 data.performance.play 替换
+8. 用 同样的方法处理 amountFor函数
+9. 用 同样的方法处理 totalAmount 。同时改变了 totalAmount 的方法签名，加入了参数
+9. 用 同样的方法处理 totalVolumeCredits 。同时改变了 totalVolumeCredits 的方法签名，加入了参数
+9. 将 statement 方法中 对 data的处理抽取到一个方法中
+
 
 # 总结
 1. 尽量减少临时变量。这样更方便提炼函数

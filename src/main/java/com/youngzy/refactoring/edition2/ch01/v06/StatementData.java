@@ -3,7 +3,9 @@ package com.youngzy.refactoring.edition2.ch01.v06;
 public class StatementData {
 
     private String customer;
-    private Performance[] performances;
+    private EnrichPerformance[] performances;
+    private double totalAmount;
+    private int volumeCredits;
 
     public void setCustomer(String customer) {
         this.customer = customer;
@@ -13,11 +15,27 @@ public class StatementData {
         return customer;
     }
 
-    public void setPerformances(Performance[] performances) {
+    public void setPerformances(EnrichPerformance[] performances) {
         this.performances = performances;
     }
 
-    public Performance[] getPerformances() {
+    public EnrichPerformance[] getPerformances() {
         return performances;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
+
+    public int getVolumeCredits() {
+        return volumeCredits;
+    }
+
+    public void setVolumeCredits(int volumeCredits) {
+        this.volumeCredits = volumeCredits;
     }
 }

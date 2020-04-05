@@ -1,5 +1,8 @@
 package com.youngzy.refactoring.edition2.ch01.v06;
 
+import org.apache.commons.beanutils.BeanUtils;
+
+import java.lang.reflect.InvocationTargetException;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Map;
@@ -15,43 +18,82 @@ public class Statement {
 
     public String statement() {
 
-        StatementData data = new StatementData();
-        data.setCustomer(invoice.getCustomer());
-        data.setPerformances(invoice.getPerformances());
+        return renderPlainText(createStatementData(invoice));
+    }
 
-        return renderPlainText(data);
+    private StatementData createStatementData(Invoice invoice) {
+        StatementData ret = new StatementData();
+
+        ret.setCustomer(invoice.getCustomer());
+        Performance[] performances = invoice.getPerformances();
+        ret.setPerformances(enrichPerformance(performances));
+        ret.setTotalAmount(totalAmount(performances));
+        ret.setVolumeCredits(totalVolumeCredits(performances));
+
+        return ret;
+    }
+
+    /**
+     * 将 另外一些必要信息封装到 Performance ，如 Play
+     *
+     * 为了不改变原对象。这里新建了对象的副本返回。
+     * 保持数据不可变性（immutable）
+     *
+     * @param performances
+     * @return
+     */
+    private EnrichPerformance[] enrichPerformance(Performance[] performances) {
+        EnrichPerformance[] ret = new EnrichPerformance[performances.length];
+
+        int i = 0;
+        EnrichPerformance dest;
+        for (Performance orig : performances) {
+            dest = new EnrichPerformance();
+            try {
+                BeanUtils.copyProperties(dest, orig);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            dest.setPlay(playFor(orig));
+            dest.setAmount(amountFor(orig));
+
+            ret[i ++] = dest;
+        }
+
+        return ret;
     }
 
     private String renderPlainText(StatementData data) {
         String ret = "Statement for " + data.getCustomer() + "\n";
 
-        for (Performance perf : data.getPerformances()) {
+        for (EnrichPerformance perf : data.getPerformances()) {
 
             // print line for this order
-            ret += "  " + playFor(perf).getName() + ": " + RMB(amountFor(perf))
+            ret += "  " + perf.getPlay().getName() + ": " + RMB(perf.getAmount())
                         + " (" + perf.getAudience() + " seats)\n";
 
         }
 
-        ret += "Amount owed is " + RMB(totalAmount()) + "\n";
-        ret += "You earned " + totalVolumeCredits() + " credits\n";
+        ret += "Amount owed is " + RMB(data.getTotalAmount()) + "\n";
+        ret += "You earned " + data.getVolumeCredits() + " credits\n";
 
         return ret;
     }
 
-    private double totalAmount() {
+    private double totalAmount(Performance[] performances) {
         double ret = 0;
 
-        for (Performance perf : invoice.getPerformances()) {
+        for (Performance perf : performances) {
             ret += amountFor(perf);
         }
 
         return ret;
     }
 
-    private int totalVolumeCredits() {
+    private int totalVolumeCredits(Performance[] performances) {
         int ret = 0;
-        for (Performance perf : invoice.getPerformances()) {
+        for (Performance perf : performances) {
             ret += volumeCreditsFor(perf);
         }
         return ret;
