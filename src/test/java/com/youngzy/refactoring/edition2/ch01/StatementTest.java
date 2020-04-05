@@ -1,6 +1,6 @@
 package com.youngzy.refactoring.edition2.ch01;
 
-import com.youngzy.refactoring.edition2.ch01.v03.*;
+import com.youngzy.refactoring.edition2.ch01.v04.*;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
