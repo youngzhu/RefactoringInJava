@@ -18,3 +18,11 @@ amountFor 方法中的2个参数并不是完全独立的。
 1. 创建 playFor 方法。在 statement 方法中调用
 2. 移除 amountFor 方法中的 play 变量
 3. 移除 statement 中 thisAmount 变量。内联变量
+
+# Step 03: 提炼积分计算的逻辑
+volumeCreditsFor
+
+
+
+# 总结
+1. 尽量减少临时变量。这样更方便提炼函数
