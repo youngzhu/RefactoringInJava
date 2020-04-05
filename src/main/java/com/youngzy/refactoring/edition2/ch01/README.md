@@ -53,6 +53,14 @@ RMB
 9. 将 组装数据（create）和展示数据（statement）彻底分离，移到另一个文件中
 9. 创建 html渲染
 
+# Step 07: 重组计算过程
+1. 创建一个计算类 PerformanceCalculator，在  enrichPerformance 方法中使用
+1. 将 amountFor 方法移到 calculator 中
+1. 将 volumeCreditsFor 方法移到 calculator 中
+1. 移除 factory 类中 volumeCreditsFor 方法，
+需要调整，因为 totalVolumeCredits 中用到了
+1. 移除 factory 类中 amountFor 方法，
+需要调整，因为 totalAmount 中用到了
 
 
 # 总结
