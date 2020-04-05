@@ -38,5 +38,12 @@ RMB
 
 以同样操作移除 总金额的临时变量
 
+# Step 06: 拆分
+1. 将渲染txt部分的代码抽取出来，方面后面实现html的渲染
+2. 将报表用到的字段封装到一个新的对象里
+3. 创建一个空对象 StatementData，作为参数传入 renderPlainText
+4. 将 customer 封装到 Data 类中
+5. 将 performances 封装到 Data中
+
 # 总结
 1. 尽量减少临时变量。这样更方便提炼函数
