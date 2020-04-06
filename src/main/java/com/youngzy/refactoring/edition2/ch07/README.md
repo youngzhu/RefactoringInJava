@@ -27,3 +27,20 @@
 1. 将 officeAreaCode，officeNumber 复制到 TelephoneNumber
 1. 在 getTelephoneNumber 中 使用 TelephoneNumber.toString
 1. 将 TelephoneNumber 中变量重命名，去掉 office 元素
+
+## Topic 06: 内联类 Inline Class
+跟05刚好相反。
+
+## Topic 07: 隐藏委托关系 Hide Delegate
+`manager = person.department.manager`  
+改为  
+`manager = person.manager`
+
+这样，对客户端就隐藏了 Person 和 Department 的关系。  
+万一 Dept 的对外接口变了，也只需要修改 Person 类，而不影响客户端
+
+## Topic 08: 移除中间人 Remove Middle Man
+跟 07 刚好相反
+
+## Topic 09: 替换算法 Substitute Algorithm
+如果有了更好的算法，或者语言升级有了新特性，就换掉老算法
