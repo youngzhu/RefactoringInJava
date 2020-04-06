@@ -36,3 +36,15 @@ getOutstanding
 
 ## Step 02: 将是否包含的这种行为抽取为一个方法
 contains
+
+# Topic 09: 函数组合成类 Combine Functions into Class
+这次不一样，从测试类先开始
+## 问题
+1. 基础费用 baseCharge 在 client1 和 2 中被重复计算了
+
+## Step 01: 将读取的数据结构封装成一个类 Reading
+1. 将 client3 中 calculateBaseCharge 方法移到 Reading
+1. 将 calculateBaseCharge 改为 getBaseCharge 
+1. 改造 client1 
+1. 改造 client2。分2步，首先将 baseCharge 替换掉
+1. 再将税费的计算 getTaxableCharge 移到 Reading
