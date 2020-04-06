@@ -14,3 +14,25 @@ getOutstanding
 
 # Topic 03: 提炼变量 Extract Variable / Introduce Variable(IDEA)
 有些表达式长且复杂，难以理解。可以增加局部变量，帮助理解
+
+# Topic 04: 内联变量 Inline Variable（略）
+简单的表达式就直接用其本身，不用声明一个临时变量了，如 
+`double basePrice = order.basePrice`
+
+# Topic 05: 改变函数声明 
+略
+
+# Topic 06: 封装变量 Encapsulate Variable
+
+# Topic 07: 重命名变量 Rename Variable
+
+# Topic 08: 引入参数对象 Introduce Parameter Object
+有一些数据项总是结伴而行，总是反复出现在各种函数中，
+如开始时间和结束时间、温度的上限和下限 等，这时可以将其组合成一个新的数据结构。
+## Step 01: 引入新类 NumberRange
+1. 在 readingOutsideRange 方法中引入 NumberRange对象，暂不使用
+1. 将原先的 min，max 参数使用的地方换成 NumberRange对象
+1. 删除 min，max 参数
+
+## Step 02: 将是否包含的这种行为抽取为一个方法
+contains
