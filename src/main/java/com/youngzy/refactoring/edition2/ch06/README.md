@@ -48,3 +48,9 @@ contains
 1. 改造 client1 
 1. 改造 client2。分2步，首先将 baseCharge 替换掉
 1. 再将税费的计算 getTaxableCharge 移到 Reading
+
+# Topic 10: 独立函数组合成变换函数 Combine Functions into Transform
+跟 09 很类似。
+
+# Topic 11: 拆分 Split Phase
+跟提前方法类似，都是将大段代码拆分成易于理解和复用的小单元。
