@@ -21,3 +21,20 @@
 ## Topic 03: 以卫语句取代循环嵌套条件语句 Replace Nested Conditional with Guard Clauses
 所谓卫语句就是比较特殊的检查条件，应该立刻返回。
 if-else 分支是平等的。卫语句是给该条件以特别的重视。
+
+## Topic 04: 以多态取代条件表达式 Replace Conditional with Polymorphism
+## Topic 05: 引入特例 Introduce Special Case
+### v01
+1. 给 customer 类新增一个方法：isUnknown()
+1. 新建特殊类 UnknownCustomer，继承自 customer 
+1. 在 Client 类新增一个 isUnknown(customer) 方法，并替换所有检查的地方
+1. 修改 Site 的 getCustomer，如果为null，则返回 UnknownCustomer 对象
+1. 在 UnknownCustomer 中 覆盖 getName 方法，返回一个默认的名字
+### v02
+1. clientOne 就可以去掉条件判断
+1. 同样的方式处理 clientTwo
+1. clientThree 是个更新操作，用一个空方法覆盖（测试类有问题）
+1. 处理 clientFour
+1. 移除Client类中的 isUnknown(Customer customer) 方法
+ 
+
