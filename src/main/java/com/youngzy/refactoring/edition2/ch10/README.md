@@ -36,5 +36,9 @@ if-else 分支是平等的。卫语句是给该条件以特别的重视。
 1. clientThree 是个更新操作，用一个空方法覆盖（测试类有问题）
 1. 处理 clientFour
 1. 移除Client类中的 isUnknown(Customer customer) 方法
+
+## Topic 06: 引入断言 Introduce Assertion
+提示调用这个方法的先决条件，如 不能为空
+
  
 
