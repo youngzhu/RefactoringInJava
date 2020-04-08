@@ -1,0 +1,19 @@
+{
+  "EuropeanSwallow": {
+    "name": "欧洲燕",
+    "plumage": "黑色",
+    "type": "EuropeanSwallow"
+  },
+  "AfricanSwallow": {
+    "name": "非洲燕",
+    "type": "AfricanSwallow",
+    "numberOfCoconuts": 3
+  },
+  "NorwegianBlueParrot": {
+    "name": "挪威蓝鹦鹉",
+    "plumage": "五颜六色",
+    "type": "NorwegianBlueParrot",
+    "voltage": 99,
+    "isNailed": false
+  }
+}
