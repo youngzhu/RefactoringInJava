@@ -5,13 +5,6 @@ import com.alibaba.fastjson.JSONObject;
 public class BirdFactory {
     public static Bird createBird(JSONObject rawData) {
 
-        switch (rawData.getString("type")) {
-//            case "EuropeanSwallow":
-//                return new EuropeanSwallow(rawData);
-
-
-            default:
-                return new Bird(rawData);
-        }
+        return new Bird(rawData);
     }
 }
