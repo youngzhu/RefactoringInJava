@@ -51,3 +51,7 @@ public Set getCourses() {
 不能创建子类时可使用。  
 如 普通员工可以晋升为经理，如果有两个类就不太合适。
 用 `setType` 可以在员工和经理直接切换
+### Step 01
+1. 先将 type 属性自封装（self-encapsulate），
+即使用他的 get/set ，而不直接使用他。
+包括 构造函数 和 payAmount
