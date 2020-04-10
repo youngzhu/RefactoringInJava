@@ -61,4 +61,7 @@ public Set getCourses() {
 
 ###  Step 02
 1. 将Employee里 setType 里的代码 和 定义的类型常量，挪到 状态类中
-1. 
+
+## Topic 17: Replace Subclass with Fields
+男人和女人就不需要创建2个子类了，在 Person 类里用性别字段区分就行
+
