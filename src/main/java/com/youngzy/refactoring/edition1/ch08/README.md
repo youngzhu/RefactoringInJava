@@ -62,6 +62,11 @@ public Set getCourses() {
 ###  Step 02
 1. 将Employee里 setType 里的代码 和 定义的类型常量，挪到 状态类中
 
+### v03 第9章，进一步，把工资也放到Type类里
+1. 将 Employee 中的 payAmount 方法移到 Type类中
+1. 将具体的实现分发到各子类中
+1. 将Type中的 payAmount 设为抽象
+
 ## Topic 17: Replace Subclass with Fields
 男人和女人就不需要创建2个子类了，在 Person 类里用性别字段区分就行
 
