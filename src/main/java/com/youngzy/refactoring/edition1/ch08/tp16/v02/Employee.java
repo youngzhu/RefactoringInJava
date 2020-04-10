@@ -1,10 +1,6 @@
-package com.youngzy.refactoring.edition1.ch08.tp16.v01;
+package com.youngzy.refactoring.edition1.ch08.tp16.v02;
 
 public class Employee {
-    public static final int ENGINEER = 0;
-    public static final int SALESMAN = 1;
-    public static final int MANAGER = 2;
-
     private EmployeeType type;
     private int monthlySalary;
     private int commission;  // 佣金
@@ -21,11 +17,11 @@ public class Employee {
 
     public int payAmount() {
         switch (getType()) {
-            case ENGINEER:
+            case EmployeeType.ENGINEER:
                 return monthlySalary;
-            case SALESMAN:
+            case EmployeeType.SALESMAN:
                 return monthlySalary + commission;
-            case MANAGER:
+            case EmployeeType.MANAGER:
                 return monthlySalary + bonus;
             default:
                 throw new RuntimeException("Incorrect Employee");
@@ -37,18 +33,8 @@ public class Employee {
     }
 
     public void setType(int type) {
-        switch (type) {
-            case ENGINEER:
-                this.type = new Engineer();
-                break;
-            case SALESMAN:
-                this.type = new Salesman();
-                break;
-            case MANAGER:
-                this.type = new Manager();
-                break;
-            default:
-                throw new RuntimeException("Incorrect Employee Code");
-        }
+        this.type = EmployeeType.newType(type);
     }
+
+
 }

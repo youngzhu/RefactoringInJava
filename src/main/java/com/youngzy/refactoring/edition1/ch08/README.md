@@ -53,5 +53,12 @@ public Set getCourses() {
 用 `setType` 可以在员工和经理直接切换
 ### Step 01
 1. 先将 type 属性自封装（self-encapsulate），
-即使用他的 get/set ，而不直接使用他。
+即，使用他的 get/set ，而不直接使用他。
 包括 构造函数 和 payAmount
+1. 定义一个状态类 EmployeeType，抽象类，抽象方法
+1. 创建子类，三类不同的员工
+1. 将  Employee 中的 type 换成 状态类，并修改get/set方法
+
+###  Step 02
+1. 将Employee里 setType 里的代码 和 定义的类型常量，挪到 状态类中
+1. 
