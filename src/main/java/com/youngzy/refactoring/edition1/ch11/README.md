@@ -58,3 +58,8 @@ class TemplateObject {
 1. eachRentalString
 1. 将以上3个方法复制到父类中，并抽象化
 1. 将statement方法剪切到父类中，删除子类中的该方法
+
+## Topic 11: Replace Inheritance with Delegation
+如果子类只用到父类一小部分的特性，那就把继承换成委托
+
+## Topic 12: Replace Delegation with Inheritance
